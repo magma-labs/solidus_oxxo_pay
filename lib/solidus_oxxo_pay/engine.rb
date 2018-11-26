@@ -11,6 +11,7 @@ module SolidusOxxoPay
 
     initializer 'spree_payment_network.register.payment_methods' do |app|
       app.config.spree.payment_methods << Spree::PaymentMethod::ConektaOxxo
+      app.config.assets.precompile += %w( oxxopay_brand.png )
     end
 
     def self.activate
