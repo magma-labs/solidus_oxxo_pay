@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <%= stylesheet_link_tag 'oxxo_pay', media: 'all', 'data-turbolinks-track': 'false' %>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+  </head>
+  <body>
+    <%= conekta_oxxo_receipt(@payment.order) %>
+  </body>
+  <script type="text/javascript" charset="utf-8">
+      document.addEventListener('DOMContentLoaded', function () {
+          window.print();
+      });
+  </script>
+</html>

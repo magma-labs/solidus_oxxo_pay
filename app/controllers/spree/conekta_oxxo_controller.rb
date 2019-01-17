@@ -8,8 +8,12 @@ module Spree
         policy = PaymentOxxoPolicy.new(payment)
         policy.process(params[:data][:object])
       end
-
       head :ok
+    end
+
+    def receipt
+      @payment = Spree::Payment.find(params[:id])
+      render layout: false
     end
   end
 end
