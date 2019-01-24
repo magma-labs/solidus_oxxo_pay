@@ -22,6 +22,22 @@ module Spree
       'Oxxo Pay'
     end
 
+    def month
+      payment_method.updated_at.month
+    end
+
+    def year
+      payment_method.updated_at.year
+    end
+
+    def cc_type
+      'N/A'
+    end
+
+    def last_digits
+      'N/A'
+    end
+
     def actions
       %w(void)
     end
