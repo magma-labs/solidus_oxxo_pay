@@ -1,5 +1,6 @@
 require 'spec_helper'
-RSpec.describe Spree::ConektaOxxoController, type: :controller do
+
+describe Spree::ConektaOxxoController, type: :controller do
   describe 'POST create' do
     let(:order) {create(:completed_order_with_pending_payment)}
     let(:payment) {order.payments.first}
@@ -40,6 +41,7 @@ RSpec.describe Spree::ConektaOxxoController, type: :controller do
 
     before do
       payment.update_attribute :response_code, '98000000143571'
+      @routes = Spree::Core::Engine.routes
     end
 
     context 'when payload is successfull' do

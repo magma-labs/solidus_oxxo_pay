@@ -26,6 +26,7 @@ First bundle your dependencies, then run `rake`. `rake` will default to building
 
 ```shell
 bundle
+bundle exec rake test_app
 bundle exec rake
 ```
 
