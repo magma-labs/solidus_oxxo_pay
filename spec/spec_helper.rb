@@ -36,9 +36,6 @@ require 'solidus_oxxo_pay/factories'
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
-  # Infer an example group's spec type from the file location.
-  config.infer_spec_type_from_file_location!
-
   # == URL Helpers
   #
   # Allows access to Spree's routes in specs:
@@ -84,4 +81,5 @@ RSpec.configure do |config|
 
   config.fail_fast = ENV['FAIL_FAST'] || false
   config.order = 'random'
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end
