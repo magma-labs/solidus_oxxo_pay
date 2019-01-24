@@ -22,6 +22,10 @@ module Spree
       'Oxxo Pay'
     end
 
+    def actions
+      %w(void)
+    end
+
     private
     def payload(order)
       {
