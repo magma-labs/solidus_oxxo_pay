@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    solidus_oxxo_pay (0.0.2)
+    solidus_oxxo_pay (0.0.3)
       conekta
       solidus_core (>= 2.0.0)
 
