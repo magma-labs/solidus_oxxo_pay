@@ -1,0 +1,12 @@
+<fieldset>
+  <legend align="center">Oxxo Pay</legend>
+  <div class="opps-info text-center">
+    <div class="opps-brand">
+      <%= image_tag 'oxxopay_brand.png', alt: 'OXXOPay' %>
+    </div>
+    <% param_prefix = "payment_source[#{payment_method.id}]" %>
+    <%= hidden_field_tag "#{param_prefix}[first_name]", @order.ship_address&.first_name %>
+    <%= hidden_field_tag "#{param_prefix}[last_name]", @order.ship_address&.last_name %>
+    <%= hidden_field_tag "#{param_prefix}[number]", @order.number %>
+  </div>
+</fieldset>

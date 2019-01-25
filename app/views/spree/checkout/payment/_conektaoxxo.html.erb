@@ -4,8 +4,8 @@
     <p class="payment-label-description">Al completar tu compra se te entregará un número de referencia para que puedas
     pagar en tu tienda Oxxo más cercana</p>
     <% param_prefix = "payment_source[#{payment_method.id}]" %>
-    <%= hidden_field_tag "#{param_prefix}[first_name]", current_order.ship_address.first_name %>
-    <%= hidden_field_tag "#{param_prefix}[last_name]", current_order.ship_address.last_name %>
-    <%= hidden_field_tag "#{param_prefix}[number]", current_order.number %>
+    <%= hidden_field_tag "#{param_prefix}[first_name]", current_order.ship_address&.first_name %>
+    <%= hidden_field_tag "#{param_prefix}[last_name]", current_order.ship_address&.last_name %>
+    <%= hidden_field_tag "#{param_prefix}[number]", current_order&.number %>
   </div>
 </div>
