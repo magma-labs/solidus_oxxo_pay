@@ -42,6 +42,14 @@ module Spree
       %w(void)
     end
 
+    def gateway_customer_profile_id
+      user_id
+    end
+
+    def gateway_payment_profile_id
+      id
+    end
+
     private
     def payload(order)
       {
