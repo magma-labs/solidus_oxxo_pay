@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'conekta'
-gem 'solidus', '> 2.0.0'
+gem 'solidus', github: 'solidusio/solidus', branch: ENV.fetch('SOLIDUS_BRANCH', 'v2.0')
 gem 'solidus_auth_devise', '~> 1.0'
 
 group :test do
