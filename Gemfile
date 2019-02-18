@@ -1,8 +1,15 @@
 source 'https://rubygems.org'
 
 gem 'conekta'
-gem 'solidus', github: 'solidusio/solidus', branch: ENV.fetch('SOLIDUS_BRANCH', 'v2.0')
+gem 'solidus', '> 2.0.0'
 gem 'solidus_auth_devise', '~> 1.0'
+
+if ENV['DB'] == 'postgresql'
+  gem 'pg', '~> 0.21'
+else
+  gem 'sqlite3', '~> 1.3', '>= 1.3.11'
+end
+
 
 group :test do
   gem 'rspec', '~> 3.8'
