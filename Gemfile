@@ -1,18 +1,32 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-gem 'conekta'
-gem 'solidus', '> 2.0.0'
-gem 'solidus_auth_devise', '~> 1.0'
+branch = ENV.fetch('SOLIDUS_BRANCH', 'master')
+gem 'solidus', github: 'solidusio/solidus', branch: branch
+gem 'solidus_auth_devise'
 
-group :test do
-  gem 'rspec', '~> 3.8'
-  gem 'rspec-rails', '~> 3.8'
-  gem 'simplecov', '~> 0.16'
-  gem 'sqlite3', '~> 1.3'
-  gem 'sql', '~> 0.0.1'
-  gem 'database_cleaner', '1.7'
-  gem 'factory_girl', '4.9'
-  gem 'pry', '~> 0.12'
+if branch == 'master' || branch >= 'v2.0'
+  gem 'rails-controller-testing', group: :test
+else
+  gem 'rails', '~> 4.2.0'
+  gem 'rails_test_params_backport', group: :test
+end
+
+if ENV['DB'] == 'mysql'
+  gem 'mysql2', '~> 0.4.10'
+else
+  gem 'pg', '~> 0.21'
+end
+
+group :development, :test do
+  gem 'pry-rails'
+
+  if branch < 'v2.5'
+    gem 'factory_bot', '4.10.0'
+  else
+    gem 'factory_bot', '> 4.10.0'
+  end
 end
 
 gemspec
