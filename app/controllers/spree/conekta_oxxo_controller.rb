@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spree
   class ConektaOxxoController < StoreController
     skip_before_action :verify_authenticity_token
