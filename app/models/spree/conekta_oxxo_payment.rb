@@ -6,17 +6,13 @@ module Spree
 
     def authorize(_money, source, gateway_options)
       ::Conekta.api_key = api_key
-      ::Conekta.api_version = "2.0.0"
+      ::Conekta.api_version = '2.0.0'
 
       begin
         order = Spree::Order.find(gateway_options[:originator].order_id)
-
-        if order.conekta_order_id
-          conekta_order = ::Conekta::Order.find(order.conekta_order_id)
-          source.update_attribute(:conekta_order_id, conekta_order.id)
-        else
-          conekta_order = ::Conekta::Order.create(payload(order))
-        end
+        conekta_order = ::Conekta::Order.find(order.conekta_order_id)
+        conekta_order ||= ::Conekta::Order.create(payload(order))
+        source.update_attribute(:conekta_order_id, conekta_order.id)
         ActiveMerchant::Billing::Response.new(true, 'Orden creada satisfactoriamente', {}, parse_response(conekta_order))
       rescue ::Conekta::Error => e
         ActiveMerchant::Billing::Response.new(false, e.details.map(&:message).join(', '))
