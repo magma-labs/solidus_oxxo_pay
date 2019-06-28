@@ -1,8 +1,12 @@
+# frozen_string_literal: true
+
 module SolidusOxxoPay
   class Engine < Rails::Engine
     require 'spree/core'
     isolate_namespace Spree
     engine_name 'solidus_oxxo_pay'
+
+    config.autoload_paths += %W(#{config.root}/lib)
 
     # use rspec for tests
     config.generators do |g|
@@ -11,7 +15,7 @@ module SolidusOxxoPay
 
     initializer 'spree_payment_network.register.payment_methods' do |app|
       app.config.spree.payment_methods << Spree::PaymentMethod::ConektaOxxo
-      app.config.assets.precompile += %w( oxxopay_brand.png )
+      app.config.assets.precompile += %w(oxxopay_brand.png)
     end
 
     def self.activate

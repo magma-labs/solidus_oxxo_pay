@@ -1,29 +1,33 @@
-<div class="opps">
-  <div class="opps-header">
-    <div class="opps-info">
-      <div class="opps-brand">
+<div class='opps'>
+  <div class='opps-header'>
+    <div class='opps-info'>
+      <div class='opps-brand'>
         <%= image_tag 'oxxopay_brand.png', alt: 'OXXOPay', class: 'summary-oxxo-image' %>
       </div>
-      <div class="opps-ammount">
-        <h3 class="opps-title">Monto a pagar</h3>
+
+      <div class='opps-ammount'>
+        <h3 class='opps-title'>Monto a pagar</h3>
         <h2><%= order.display_total %> <sup>MXN</sup></h2>
         <p>OXXO cobrará una comisión adicional al momento de realizar el pago.</p>
       </div>
     </div>
-    <div class="opps-reference">
-      <h3 class="opps-reference-title">Referencia</h3>
-      <h1 class="opps-reference"><%= response_code.scan(/.{1,4}/).join('-') %></h1>
+
+    <div class='opps-reference'>
+      <h3 class='opps-reference-title'>Referencia</h3>
+      <h1 class='opps-reference'><%= response_code&.scan(/.{1,4}/)&.join('-') %></h1>
     </div>
   </div>
-  <div class="opps-instructions">
+
+  <div class='opps-instructions'>
     <h3>Instrucciones</h3>
-    <ol class="steps-list">
-      <li>Acude a la tienda OXXO más cercana. <a href="https://www.google.com.mx/maps/search/oxxo/" target="_blank">Encuéntrala aquí</a>.</li>
+
+    <ol class='steps-list'>
+      <li>Acude a la tienda OXXO más cercana. <a href='https://www.google.com.mx/maps/search/oxxo/' target='_blank'>Encuéntrala aquí</a>.</li>
       <li>Indica en caja que quieres realizar un pago de <strong>OXXOPay</strong>.</li>
       <li>Dicta al cajero el número de referencia en esta ficha para que tecleé directamete en la pantalla de venta.</li>
       <li>Realiza el pago correspondiente con dinero en efectivo.</li>
       <li>Al confirmar tu pago, el cajero te entregará un comprobante impreso. <strong>En el podrás verificar que se haya realizado correctamente.</strong> Conserva este comprobante de pago.</li>
     </ol>
-    <div class="opps-footnote">Al completar estos pasos recibirás un correo confirmando tu pago.</div>
+    <div class='opps-footnote'>Al completar estos pasos recibirás un correo confirmando tu pago.</div>
   </div>
 </div>

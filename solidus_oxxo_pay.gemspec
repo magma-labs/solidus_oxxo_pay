@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'solidus_oxxo_pay/version'
@@ -18,7 +20,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'solidus', ['>= 2.0', '< 3']
   s.add_dependency 'solidus_support'
-  s.add_dependency 'deface', '~> 1.0'
+  s.add_dependency 'deface'
   s.add_dependency 'conekta'
 
   s.add_development_dependency 'capybara'
