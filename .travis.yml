@@ -1,20 +1,19 @@
-cache: bundler
+dist: trusty
+sudo: false
 language: ruby
 rvm:
-  - 2.5.0
-install:
-  - bundle install --path vendor/bundle
-script:
-  - bundle exec rake test_app
-  - bundle exec rspec spec/
+  - 2.4.6
 env:
   matrix:
-    - SOLIDUS_BRANCH=v2.0
-    - SOLIDUS_BRANCH=v2.1
-    - SOLIDUS_BRANCH=v2.2
-    - SOLIDUS_BRANCH=v2.3
-    - SOLIDUS_BRANCH=v2.4
-    - SOLIDUS_BRANCH=v2.5
-    - SOLIDUS_BRANCH=v2.6
-    - SOLIDUS_BRANCH=v2.7
-    - SOLIDUS_BRANCH=master
+    - SOLIDUS_BRANCH=v2.4 DB=postgres
+    - SOLIDUS_BRANCH=v2.5 DB=postgres
+    - SOLIDUS_BRANCH=v2.6 DB=postgres
+    - SOLIDUS_BRANCH=v2.7 DB=postgres
+    - SOLIDUS_BRANCH=v2.8 DB=postgres
+    - SOLIDUS_BRANCH=master DB=postgres
+    - SOLIDUS_BRANCH=v2.4 DB=mysql
+    - SOLIDUS_BRANCH=v2.5 DB=mysql
+    - SOLIDUS_BRANCH=v2.6 DB=mysql
+    - SOLIDUS_BRANCH=v2.7 DB=mysql
+    - SOLIDUS_BRANCH=v2.8 DB=mysql
+    - SOLIDUS_BRANCH=master DB=mysql
