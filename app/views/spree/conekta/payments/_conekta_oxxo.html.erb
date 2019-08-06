@@ -1,5 +1,6 @@
 <div class='opps'>
   <div class='opps-header'>
+    <div class="opps-reminder">Ficha digital. No es necesario imprimir.</div>
     <div class='opps-info'>
       <div class='opps-brand'>
         <%= image_tag 'oxxopay_brand.png', alt: 'OXXOPay', class: 'summary-oxxo-image' %>
@@ -12,7 +13,7 @@
       </div>
     </div>
 
-    <div class='opps-reference'>
+    <div class='opps-reference-container'>
       <h3 class='opps-reference-title'>Referencia</h3>
       <h1 class='opps-reference'><%= response_code&.scan(/.{1,4}/)&.join('-') %></h1>
     </div>
