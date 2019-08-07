@@ -1,122 +1,121 @@
 .opps-title {
-	margin-bottom: 10px;
-	font-size: 15px;
-	font-weight: 600;
-	text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .opps {
-	width: 496px;
-	border-radius: 4px;
-	box-sizing: border-box;
-	padding: 0 45px;
-	margin: 40px auto;
-	overflow: hidden;
-	border: 1px solid #b0afb5;
-	font-family: 'Open Sans', sans-serif;
-	color: #4f5365;
+  border-radius: 4px;
+  border: 1px solid #b0afb5;
+  box-sizing: border-box;
+  color: #4f5365;
+  font-family: 'Open Sans', sans-serif;
+  margin: 40px auto;
+  overflow: hidden;
+  padding: 0 45px;
+  width: 496px;
 }
 
 .opps-reminder {
-	position: relative;
-	top: -1px;
-	padding: 9px 0 10px;
-	font-size: 11px;
-	text-transform: uppercase;
-	text-align: center;
-	color: #ffffff;
-	background: #000000;
+  background: #000000;
+  color: #ffffff;
+  font-size: 11px;
+  padding: 9px 0 10px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: -1px;
 }
 
 .opps-info {
-	margin-top: 26px;
-	position: relative;
+  margin-top: 26px;
+  position: relative;
 }
 
 .opps-info:after {
-	visibility: hidden;
-     display: block;
-     font-size: 0;
-     content: " ";
-     clear: both;
-     height: 0;
-
+  clear: both;
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  visibility: hidden;
 }
 
 .opps-brand {
-	width: 45%;
-	float: left;
+  float: left;
+  width: 45%;
 }
 
 .opps-brand img {
-	max-width: 150px;
-	margin-top: 2px;
+  margin-top: 2px;
+  max-width: 150px;
 }
 
 .opps-ammount {
-	width: 55%;
-	float: right;
+  float: right;
+  width: 55%;
 }
 
 .opps-ammount h2 {
-	font-size: 36px;
-	color: #000000;
-	line-height: 24px;
-	margin-bottom: 15px;
+  color: #000000;
+  font-size: 36px;
+  line-height: 24px;
+  margin-bottom: 15px;
 }
 
 .opps-ammount h2 sup {
-	font-size: 16px;
-	position: relative;
-	top: -2px
+  font-size: 16px;
+  position: relative;
+  top: -2px
 }
 
 .opps-ammount p {
-	font-size: 10px;
-	line-height: 14px;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.opps-reference-container {
+  margin-top: 14px;
 }
 
 .opps-reference {
-	margin-top: 14px;
-}
-
-.opps-reference {
-	font-size: 27px;
-	color: #000000;
-	text-align: center;
-	margin-top: -1px;
-	padding: 6px 0 7px;
-	border: 1px solid #b0afb5;
-	border-radius: 4px;
-	background: #f8f9fa;
+  background: #f8f9fa;
+  border-radius: 4px;
+  border: 1px solid #b0afb5;
+  color: #000000;
+  font-size: 27px;
+  margin-top: -1px;
+  padding: 6px 0 7px;
+  text-align: center;
 }
 
 .opps-instructions {
-	margin: 32px -45px 0;
-	padding: 32px 45px 45px;
-	border-top: 1px solid #b0afb5;
-	background: #f8f9fa;
+  background: #f8f9fa;
+  border-top: 1px solid #b0afb5;
+  margin: 32px -45px 0;
+  padding: 32px 45px 45px;
 }
 
 .steps-list {
-	margin: 17px 0 0 16px;
+  margin: 17px 0 0 16px;
 }
 
 li + li {
-	margin-top: 10px;
-	color: #000000;
+  color: #000000;
+  margin-top: 10px;
 }
 
 .oxxo-print-button {
-	color: #1155cc;
+  color: #1155cc;
 }
 
 .opps-footnote {
-	margin-top: 22px;
-	padding: 22px 20 24px;
-	color: #108f30;
-	text-align: center;
-	border: 1px solid #108f30;
-	border-radius: 4px;
-	background: #ffffff;
+  background: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #108f30;
+  color: #108f30;
+  margin-top: 22px;
+  padding: 22px 20px 24px;
+  text-align: center;
 }
