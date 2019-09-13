@@ -8,7 +8,7 @@ require 'rspec/rails'
 
 Dir[File.join(File.dirname(__FILE__), '/support/**/*.rb')].each { |file| require file }
 
-require 'solidus_oxxo_pay/factories'
+load "#{File.dirname(__FILE__)}/../lib/solidus_oxxo_pay/factories.rb"
 require 'spree/testing_support/controller_requests'
 require 'solidus_support/extension/feature_helper'
 
