@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/magma-labs/solidus_oxxo_pay.svg?branch=master)](https://travis-ci.org/magma-labs/solidus_oxxo_pay)
+[![CircleCI](https://circleci.com/gh/magma-labs/solidus_oxxo_pay.svg?style=svg)](https://circleci.com/gh/magma-labs/solidus_oxxo_pay)
 
 SolidusOxxoPay
 ==============

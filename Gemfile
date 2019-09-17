@@ -7,12 +7,12 @@ git_source(:github) { |name| "https://github.com/#{name}.git" }
 branch = ENV.fetch('SOLIDUS_BRANCH', 'master')
 gem 'solidus', github: 'solidusio/solidus', branch: branch
 gem 'solidus_auth_devise'
+gem 'rails-controller-testing', group: :test
 
-if branch == 'master' || branch >= 'v2.0'
-  gem 'rails-controller-testing', group: :test
+if branch == 'master' || Gem::Version.new(branch[1..-1]) >= Gem::Version.new('2.10.0')
+  gem 'rails', '~> 6.0.0'
 else
-  gem 'rails', '~> 4.2.0'
-  gem 'rails_test_params_backport', group: :test
+  gem 'rails', '~> 5.1.0'
 end
 
 if ENV['DB'] == 'mysql'
