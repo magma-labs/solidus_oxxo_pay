@@ -14,7 +14,7 @@ module Spree
     end
 
     def receipt
-      @payment = Spree::Payment.find(params[:id])
+      @payment = Spree::Payment.find_by(number: params[:number])
       render layout: false
     end
   end

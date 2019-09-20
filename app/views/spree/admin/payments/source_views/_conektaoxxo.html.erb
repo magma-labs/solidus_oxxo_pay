@@ -9,5 +9,5 @@
     <h3>Referencia</h3>
     <h1><%= payment.response_code.to_s.scan(/.{1,4}/).join('-') %></h1>
   </div>
-  <%= link_to t('payment.print_ticket'), oxxo_pay_receipt_path(id: payment.id), target: 'new', class: 'eyecatcher-link__text' %>
+  <%= link_to t('payment.print_ticket'), oxxo_pay_receipt_path(number: payment.number), target: 'new', class: 'eyecatcher-link__text' %>
 </fieldset>
