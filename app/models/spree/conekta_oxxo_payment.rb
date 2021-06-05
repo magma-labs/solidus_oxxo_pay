@@ -14,7 +14,7 @@ module Spree
 
       begin
         response = ::Conekta::Order.create(payload(order))
-        source.update_attribute :conekta_order_id, response.id
+        source.update(:conekta_order_id, response.id)
         ActiveMerchant::Billing::Response.new(true, 'Orden creada satisfactoriamente', {}, parse_response(response))
       rescue ::Conekta::Error => e
         ActiveMerchant::Billing::Response.new(false, e.details.map(&:message).join(', '))

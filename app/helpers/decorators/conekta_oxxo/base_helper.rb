@@ -10,16 +10,15 @@ module Decorators
       end
 
       def conekta_oxxo_receipt(payment)
-        if payment.source_type == 'Spree::ConektaOxxoPayment'
-          response_code = payment.response_code
+        return unless payment.source_type == 'Spree::ConektaOxxoPayment'
 
-          render partial: 'spree/conekta/payments/conekta_oxxo',
-                 locals: { order: payment.order, response_code: response_code }
-        end
+        response_code = payment.response_code
+
+        render partial: 'spree/conekta/payments/conekta_oxxo',
+          locals: { order: payment.order, response_code: response_code }
       end
     end
   end
 end
 
 ::Spree::BaseController.include(Decorators::ConektaOxxo::BaseHelper)
-
