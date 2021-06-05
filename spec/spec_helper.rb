@@ -1,17 +1,32 @@
 # frozen_string_literal: true
 
+# Configure Rails Environment
 ENV['RAILS_ENV'] = 'test'
 
-require File.expand_path('../dummy/config/environment.rb',  __FILE__)
+# Run Coverage report
+require 'solidus_dev_support/rspec/coverage'
 
-require 'rspec/rails'
+# Create the dummy app if it's still missing.
+dummy_env = "#{__dir__}/dummy/config/environment.rb"
+system 'bin/rake extension:test_app' unless File.exist? dummy_env
+require dummy_env
 
-Dir[File.join(File.dirname(__FILE__), '/support/**/*.rb')].each { |file| require file }
+# Requires factories and other useful helpers defined in spree_core.
+require 'solidus_dev_support/rspec/feature_helper'
+require 'spree/testing_support/order_walkthrough'
 
-load "#{File.dirname(__FILE__)}/../lib/solidus_oxxo_pay/factories.rb"
-require 'spree/testing_support/controller_requests'
-require 'solidus_support/extension/feature_helper'
+# Requires supporting ruby files with custom matchers and macros, etc,
+# in spec/support/ and its subdirectories.
+Dir["#{__dir__}/support/**/*.rb"].sort.each { |f| require f }
+
+# Requires factories defined in lib/solidus_oxxo_pay/testing_support/factories.rb
+SolidusDevSupport::TestingSupport::Factories.load_for(SolidusOxxoPay::Engine)
 
 RSpec.configure do |config|
-  config.include Spree::TestingSupport::ControllerRequests, type: :controller
+  config.infer_spec_type_from_file_location!
+  config.use_transactional_fixtures = false
+
+  if Spree.solidus_gem_version < Gem::Version.new('2.11')
+    config.extend Spree::TestingSupport::AuthorizationHelpers::Request, type: :system
+  end
 end
