@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
+require 'solidus_oxxo_pay'
+
 module SolidusOxxoPay
   class Engine < Rails::Engine
-    require 'spree/core'
+    include SolidusSupport::EngineExtensions
+
     isolate_namespace Spree
+
     engine_name 'solidus_oxxo_pay'
 
     # use rspec for tests
@@ -15,13 +19,5 @@ module SolidusOxxoPay
       app.config.spree.payment_methods << Spree::PaymentMethod::ConektaOxxo
       app.config.assets.precompile += %w(oxxopay_brand.png)
     end
-
-    def self.activate
-      Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/decorators/**/*.rb')) do |c|
-        Rails.configuration.cache_classes ? require(c) : load(c)
-      end
-    end
-
-    config.to_prepare(&method(:activate).to_proc)
   end
 end
