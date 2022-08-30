@@ -6,7 +6,7 @@ module Decorators
       def self.prepended(base)
         base.module_eval do
           def conekta_oxxo_receipt(payment)
-            return unless payment.source_type == 'Spree::ConektaOxxoPayment'
+            return unless payment.source_type == 'Spree::OxxoPayPayment'
 
             response_code = payment.response_code
 

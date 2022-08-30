@@ -4,17 +4,17 @@ require 'conekta'
 
 module Spree
   class ConektaOxxoPayment < Spree::PaymentSource
-    attr_accessor :server, :test_mode, :api_key, :test
+    attr_accessor :server, :test_mode, :api_key, :api_version, :test
 
     def authorize(_money, source, _gateway_options)
       ::Conekta.api_key = api_key
-      ::Conekta.api_version = '2.0.0'
+      ::Conekta.api_version = api_version
 
       order = Spree::Order.find_by(number: source.number)
 
       begin
         response = ::Conekta::Order.create(payload(order))
-        source.update(:conekta_order_id, response.id)
+        source.update(conekta_order_id: response.id)
         ActiveMerchant::Billing::Response.new(
           true,
           'Orden creada satisfactoriamente',
