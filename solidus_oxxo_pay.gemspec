@@ -16,13 +16,10 @@ Gem::Specification.new do |s|
   if s.respond_to?(:metadata)
     s.metadata['homepage_uri'] = s.homepage if s.homepage
     s.metadata['source_code_uri'] = s.homepage if s.homepage
+    s.metadata['rubygems_mfa_required'] = 'true'
   end
 
   s.required_ruby_version = Gem::Requirement.new('>= 2.5')
-
-  files = Dir.chdir(__dir__) { `git ls-files -z`.split("\x0") }
-
-  s.required_ruby_version = '>= 2.4.0'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -36,10 +33,10 @@ Gem::Specification.new do |s|
 
   solidus_version = ['>= 2.6', '< 4']
 
+  s.add_dependency 'conekta'
   s.add_dependency 'deface', '~> 1.0'
   s.add_dependency 'solidus_core', solidus_version
   s.add_dependency 'solidus_support', '~> 0.5'
-  s.add_dependency 'conekta'
 
   s.add_development_dependency 'solidus_backend', solidus_version
   s.add_development_dependency 'solidus_dev_support', '~> 2.5'

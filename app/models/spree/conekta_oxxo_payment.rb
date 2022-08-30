@@ -15,9 +15,17 @@ module Spree
       begin
         response = ::Conekta::Order.create(payload(order))
         source.update(:conekta_order_id, response.id)
-        ActiveMerchant::Billing::Response.new(true, 'Orden creada satisfactoriamente', {}, parse_response(response))
+        ActiveMerchant::Billing::Response.new(
+          true,
+          'Orden creada satisfactoriamente',
+          {},
+          parse_response(response)
+        )
       rescue ::Conekta::Error => e
-        ActiveMerchant::Billing::Response.new(false, e.details.map(&:message).join(', '))
+        ActiveMerchant::Billing::Response.new(
+          false,
+          e.details.map(&:message).join(', ')
+        )
       end
     end
 
@@ -55,13 +63,24 @@ module Spree
 
     private
 
+    def address_name(order)
+      if SolidusSupport.combined_first_and_last_name_in_address? ||
+          order.ship_address.respond_to?(:name)
+        order.ship_address&.name
+      elsif order.ship_address.respond_to?(:full_name)
+        order.ship_address&.full_name
+      else
+        [order.ship_address&.firstname, order.ship_address&.lastname].join(' ')
+      end
+    end
+
     def payload(order)
       {
         currency: 'MXN',
         customer_info: {
-          name: order.ship_address.full_name,
+          name: address_name(order),
           email: order.email,
-          phone: order.ship_address.phone
+          phone: order.ship_address&.phone
         },
         charges: [
           {
@@ -74,8 +93,8 @@ module Spree
         shipping_lines: shipping_lines(order),
         shipping_contact: {
           address: {
-            street1: order.ship_address.address1,
-            postal_code: order.ship_address.zipcode,
+            street1: order.ship_address&.address1,
+            postal_code: order.ship_address&.zipcode,
             country: 'MX'
           }
         }
@@ -94,7 +113,7 @@ module Spree
 
     def parse_response(response)
       {
-        authorization: response.charges.first.payment_method.reference,
+        authorization: response.charges.first&.payment_method&.reference,
         conekta_order_id: response.id
       }
     end
