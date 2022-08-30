@@ -19,7 +19,7 @@ gem 'solidus_sample', github: solidus_git, branch: branch
 
 gem 'rails', ENV.fetch('RAILS_VERSION', nil)
 
-case ENV['DB']
+case ENV.fetch('DB', nil)
 when 'mysql'
   gem 'mysql2'
 when 'postgresql'

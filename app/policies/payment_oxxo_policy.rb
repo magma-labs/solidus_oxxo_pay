@@ -10,7 +10,7 @@ class PaymentOxxoPolicy
   def process(options)
     return unless options[:status].eql?('paid')
 
-    payment.complete if (options[:amount].to_i / 100 - payment.amount).abs < 0.01
+    payment.complete if ((options[:amount].to_i / 100) - payment.amount).abs < 0.01
     payment.order.updater.update
   end
 end
