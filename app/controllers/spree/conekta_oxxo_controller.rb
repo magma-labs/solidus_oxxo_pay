@@ -4,6 +4,8 @@ module Spree
   class ConektaOxxoController < StoreController
     skip_before_action :verify_authenticity_token
 
+    helper ::SolidusOxxoPay::BaseHelper
+
     def create
       if params[:data][:object][:object] == 'charge' &&
           params[:data][:object][:status] == 'paid'
