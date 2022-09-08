@@ -21,6 +21,12 @@ bundle
 bundle exec rails g solidus_oxxo_pay:install
 ```
 
+Setup
+-------
+- Create an account on [Conekta](https://conekta.com/) and get your api key from an existing or new store
+- Add a new payment method using Conekta Oxxo provider on `/admin/payment_methods/new`
+- Specify your private api key provided by Conekta in your new payment method
+
 Testing
 -------
 
